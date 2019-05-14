@@ -23,3 +23,5 @@ data = np.array(data)
 print(header)
 for row in data:
     print(row)
+
+print("Done")
