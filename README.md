@@ -1,1 +1,1 @@
-# Intelligent-systems---Diabetes-prediction
+# Intelligent systems - Diabetes prediction
