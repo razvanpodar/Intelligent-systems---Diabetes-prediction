@@ -10,48 +10,49 @@ print (iris.target_names)
 print (iris.data[0])
 print (iris.target[0])
 
+target = []
+data = []
+target_names = []
+feature_names = []
+
+# Get data from csv
+
 csv_object = csv.reader(open('diabetes_dataset.csv', 'r'))
 header = next(csv_object)
 
 dataset = []
 for row in csv_object:
     dataset.append(row)
-#data = np.array(data)
+#data = np.array(dataset)
 
-'''
-iris.target[0] - tested_negative
-iris.data[0]   - all the info from first
-target names - class
-feature names - preg, age, etc.
-'''
+# Separate data
 
-test_idx = [768, 769]
+feat_names = header
+del feat_names[-1]
+feature_names =  feat_names
 
-target = []
-data = []
-target_names = []
-feature_names = []
+target_aux = []
 
-#print (dataset)
 for row in dataset:
-    #if row
-    #target_names.append()
-    #feature_names.append()
-
-    target.append(row[-1])
+    target_aux.append(row[-1])
     row_data = row
     del row_data[-1]
     data.append(row_data)
 
+target_names = target_aux
+target_names = list(dict.fromkeys(target_names))
 
-#target = dataset[9]
+for row in target_aux:
+    if(row == target_names[0]):
+        target.append(1)
+    else:
+        target.append(0)
 
-#print (target_names)
+print (target_names)
 print (target)
+print (feature_names)
 print (data)
-'''
-print(header)
-for row in data:
-    print(row)
 
-'''
+test_idx = [768, 769]
+
+
