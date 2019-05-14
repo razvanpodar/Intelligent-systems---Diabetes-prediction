@@ -55,4 +55,16 @@ print (data)
 
 test_idx = [768, 769]
 
+# Training data
+train_target = np.delete(target, test_idx)
+train_data = np.delete(data, test_idx, axis = 0)
+
+#Testing data
+
+test_target = target[test_idx]
+test_data = data[test_idx]
+
+
+
+
 
