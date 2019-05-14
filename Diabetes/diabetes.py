@@ -16,7 +16,6 @@ target_names = []
 feature_names = []
 
 # Get data from csv
-
 csv_object = csv.reader(open('diabetes_dataset.csv', 'r'))
 header = next(csv_object)
 
@@ -26,7 +25,6 @@ for row in csv_object:
 #data = np.array(dataset)
 
 # Separate data
-
 feat_names = header
 del feat_names[-1]
 feature_names =  feat_names
@@ -53,16 +51,24 @@ print (target)
 print (feature_names)
 print (data)
 
-test_idx = [768, 769]
+# test_idx = [766, 767]
+test_idx = slice(766, 767)
 
 # Training data
 train_target = np.delete(target, test_idx)
 train_data = np.delete(data, test_idx, axis = 0)
 
-#Testing data
-
+# Testing data
 test_target = target[test_idx]
 test_data = data[test_idx]
+
+# Decision tree classifier
+
+classif = tree.DecisionTreeClassifier()
+classif.fit(train_data, train_target)
+
+print (test_target)
+print (classif.predict(test_data))
 
 
 
