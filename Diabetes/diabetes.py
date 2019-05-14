@@ -54,16 +54,34 @@ print (data)
 # test_idx = [766, 767]
 test_idx = slice(766, 767)
 
+test1 = 766
+test2 = 767
+
 # Training data
-train_target = np.delete(target, test_idx)
-train_data = np.delete(data, test_idx, axis = 0)
+# train_target = np.delete(target, test_idx)
+
+train_target = np.delete(target, test1)
+train_target = np.delete(target, test2)
+
+# train_data = np.delete(data, test_idx, axis = 0)
+
+train_data = np.delete(data, test1, axis = 0)
+train_data = np.delete(data, test2, axis = 0)
 
 # Testing data
-test_target = target[test_idx]
-test_data = data[test_idx]
+# test_target = target[test_idx]
+
+test_target = []
+test_target.append(target[test1])
+test_target.append(target[test2])
+
+# test_data = data[test_idx]
+
+test_data = []
+test_data.append(data[test1])
+test_data.append(data[test2])
 
 # Decision tree classifier
-
 classif = tree.DecisionTreeClassifier()
 classif.fit(train_data, train_target)
 
