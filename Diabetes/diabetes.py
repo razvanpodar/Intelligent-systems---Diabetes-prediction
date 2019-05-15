@@ -1,16 +1,9 @@
 from sklearn.neural_network import MLPClassifier
 from sklearn import tree
-from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import numpy as np
 import csv
-
-iris = load_iris()
-print (iris.feature_names)
-print (iris.target_names)
-print (iris.data[0])
-print (iris.target[0])
 
 target = []
 data = []
@@ -101,7 +94,14 @@ predictions = classifier.predict(X_test)
 print (accuracy_score(y_test, predictions))
 
 
+# Neural network classifier
+'''
+clf = MLPClassifier(solver = 'lbfgs', alpha = 1e-5, hidden_layer_sizes = (15, ), random_state = 1)
+clf.fit(X_train, y_train)
 
+print (clf.predict(test_data))
+
+'''
 
 
 
