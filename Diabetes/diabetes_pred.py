@@ -32,22 +32,19 @@ for row in df['class']:
 # Convert from dataframe to array
 
 data = data.values
-data1 = []
+data1 = data
 data2 = []
 
 for row in data:
     s = row
     data2.append(row)
-    for i in row:
-        data1.append(i)
 
-data = data1
 data = data2
 
 print(target_names)
 print(target)
 print(features_names)
-print(data)
+print(data1)
 
 # Test rows
 
@@ -85,5 +82,16 @@ classifier = tree.DecisionTreeClassifier()
 classifier.fit(X_train, y_train)
 
 predictions = classifier.predict(X_test)
+
+print (accuracy_score(y_test, predictions))
+
+# Neural network
+
+clf = MLPClassifier(solver = 'lbfgs', alpha = 1e-5, hidden_layer_sizes = (15, ), random_state = 1)
+clf.fit(X_train, y_train)
+
+print (clf.predict(test_data))
+
+predictions = clf.predict(X_test)
 
 print (accuracy_score(y_test, predictions))
