@@ -58,30 +58,17 @@ nrOfTests = 2
 
 # Training data
 
-#train_target = np.delete(target, test2)
-#train_target = np.delete(train_target, test1)
-
 train_target = target[:-(nrOfTests * len(features_names))]
 
-#train_data = np.delete(data, test2)
-#train_data = np.delete(train_data, test1)
-
 train_data = data[:-(nrOfTests * len(features_names))]
-
-print (train_target)
-print (train_data)
 
 # Testing data
 
 test_target = []
 test_target = target[-(nrOfTests * len(features_names)):]
 
-print(test_target)
-
 test_data = []
 test_data = data[-(nrOfTests * len(features_names)):]
-
-print(test_data)
 
 # Decision tree classifier
 
@@ -92,7 +79,7 @@ print (test_target)
 print (classif.predict(test_data))
 
 # Test classifier's accuracy
-X_train, X_test, y_train, y_test = train_test_split(data, target, test_size = .5)
+X_train, X_test, y_train, y_test = train_test_split(data, target, test_size = .8)
 
 classifier = tree.DecisionTreeClassifier()
 classifier.fit(X_train, y_train)
