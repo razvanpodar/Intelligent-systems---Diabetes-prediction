@@ -32,8 +32,14 @@ for row in df['class']:
 # Convert from dataframe to array
 
 data = data.values
-#data1 = data.to_numpy()
-#print (data1)
+data1 = []
+
+for row in data:
+    s = row
+    for i in row:
+        data1.append(i)
+
+data = data1
 
 print(target_names)
 print(target)
@@ -63,6 +69,7 @@ test_data = []
 test_data.append(data[test1])
 test_data.append(data[test2])
 
+'''
 # Decision tree classifier
 
 classif = tree.DecisionTreeClassifier()
@@ -70,3 +77,5 @@ classif.fit(train_data, train_target)
 
 print (test_target)
 print (classif.predict(test_data))
+
+'''
