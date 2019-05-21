@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import numpy as np
 import pandas as pd
-import csv
+import graphviz
 
 target = []
 data = []
@@ -76,13 +76,15 @@ print (test_target)
 print (classif.predict(test_data))
 
 # Test classifier's accuracy
-X_train, X_test, y_train, y_test = train_test_split(data, target, test_size = .8)
+
+X_train, X_test, y_train, y_test = train_test_split(data, target, test_size = .5)
 
 classifier = tree.DecisionTreeClassifier()
 classifier.fit(X_train, y_train)
 
 predictions = classifier.predict(X_test)
 
+print("Acuratete:")
 print (accuracy_score(y_test, predictions))
 
 # Neural network
