@@ -41,10 +41,19 @@ for row in data:
 
 data = data2
 
+print()
+print("Possible results(The 2 output nodes of the neural network)")
 print(target_names)
+print()
+print("List of all the results encoded(tested_positive = 0, tested_negative = 1")
 print(target)
+print()
+print("The features(the input nodes in the neural network, 8 features meaning 8 input nodes for the neural network)")
 print(features_names)
+print()
+print("This is the data from which the classifier learns(the values of each feature)")
 print(data1)
+print()
 
 # Test rows
 
@@ -52,6 +61,9 @@ test1 = 766
 test2 = 767
 
 nrOfTests = 2
+print("Number of rows for tests")
+print(nrOfTests)
+print()
 
 # Training data
 
@@ -67,33 +79,32 @@ test_target = target[-(nrOfTests * len(features_names)):]
 test_data = []
 test_data = data[-(nrOfTests * len(features_names)):]
 
+print("The expected results after tests(last 16 rows of the data set")
+print (test_target)
+print()
+
 # Decision tree classifier
 
 classif = tree.DecisionTreeClassifier()
 classif.fit(train_data, train_target)
 
-print (test_target)
+print("Decision tree results")
+pred = classif.predict(test_data)
 print (classif.predict(test_data))
 
-# Test classifier's accuracy
-
-X_train, X_test, y_train, y_test = train_test_split(data, target, test_size = .5)
-
-classifier = tree.DecisionTreeClassifier()
-classifier.fit(X_train, y_train)
-
-predictions = classifier.predict(X_test)
-
-print("Acuratete:")
-print (accuracy_score(y_test, predictions))
+print("Decision tree accuracy")
+print (accuracy_score(test_target, pred))
+print()
 
 # Neural network
 
 clf = MLPClassifier(solver = 'lbfgs', alpha = 1e-5, hidden_layer_sizes = (15, ), random_state = 1)
-clf.fit(X_train, y_train)
+clf.fit(train_data, train_target)
 
+print("Neural network results")
 print (clf.predict(test_data))
 
-predictions = clf.predict(X_test)
+predictions = clf.predict(test_data)
 
-print (accuracy_score(y_test, predictions))
+print("Neural network accuracy")
+print (accuracy_score(test_target, predictions))
